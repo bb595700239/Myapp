@@ -4,7 +4,8 @@
   "description": "a webpack example",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack --progress --profile --colors --config webpack.production.config.js"
   },
   "author": "joubn",
   "license": "ISC",

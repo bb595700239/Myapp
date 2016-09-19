@@ -10,15 +10,13 @@ module.exports = {
   	//项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
   	entry: {
 	    app: path.resolve(APP_PATH, 'index.js'),
-	    vendors: ['jquery', 'moment']
+	    vendors: ['jquery', 'moment', 'lodash']
 	},
   	//输出的文件名 合并以后的js会命名为bundle.js
   	output: {
 	  	path: BUILD_PATH,
-	  	filename: '[name].js'
+	  	filename: '[name].[hash].js'
   	},
-  	//启用source-map显示你出错代码的位置
-  	devtool: 'eval-source-map',
   	module: {
 	  	loaders: [
 	  		//css的引用配置
@@ -56,6 +54,8 @@ module.exports = {
   	},
   	plugins: [
 	    //使用webpack.ProvidePlugin把一个全局变量插入到所有的代码中
+	    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+	    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
 	    new webpack.ProvidePlugin({
 	      $: "jquery",
 	      jQuery: "jquery",
