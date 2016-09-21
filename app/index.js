@@ -1,6 +1,6 @@
-var sub = require('./sub');
+import sub from './sub';
 // require('./index.css');
-require('./main.scss');
+import './main.scss';
 
 import './plugin.js';
 
@@ -11,4 +11,3 @@ document.body.appendChild(app);
 
 $('body').append('<p>this is jquery setDom 2</p>')
 $('p').greenify();
-
